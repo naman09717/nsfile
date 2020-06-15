@@ -16,15 +16,10 @@ variable "key_name" {
 
 resource "aws_security_group" "sg" {
   name        = "sg"
-  description = "Allow ssh,http and https for webhosting"
+  description = "Allow ssh and http for webhosting"
   vpc_id      = "vpc-98fee3f0"
 
-  ingress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  
   ingress {
     from_port   = 80
     to_port     = 80
@@ -39,12 +34,6 @@ resource "aws_security_group" "sg" {
   }
 
 
-  egress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
  egress {
     from_port   = 80
     to_port     = 80
